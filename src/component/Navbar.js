@@ -10,9 +10,10 @@ const Navbar = () => (
       </Menu.Item>
     </NavLink>
 
-    <NavLink to="/user-profile">
+    <NavLink to="/user/profile">
       <Menu.Item>
       User Profile
+      {/* wil be replaced with name */}
       </Menu.Item>
     </NavLink>
   </Menu>
