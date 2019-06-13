@@ -1,23 +1,25 @@
 import React from 'react';
 import { Form, } from 'semantic-ui-react';
+import { UserConsumer, } from "../provider/UserProvider"
 
 
 class UserForm extends React.Component {
-  state = {
-    user: [
-     {firstName: 'butt', lastName: 'face', avatar: 'img', memebershipOptions: 'gold' },
-     {firstName: '', lastName: '', avatar: '', },
-    ]
-  }
+  state =
+     { firstName: this.props.firstName, lastName: this.props.lastName,
+       avatar: this.props.avatar, membershipOptions: this.props.membershipOptions, }
+
 
   handleSubmit = (e) => {
     e.preventDefault();
   }
 
-  handleChange = (e, { name, value}) => this.setState( { [name]: value, });
+  handleChange = (name) => (e) => (
+    this.setState({...this.state, [name]: e.target.value})
+  )
+
 
   render() {
-    const { firstName, lastName, avatar, } = this.state;
+    const { firstName, lastName, avatar, membershipOptions } = this.state;
     return (
 
       <Form onSubmit={this.handleSubmit}>
@@ -25,9 +27,8 @@ class UserForm extends React.Component {
 
         <Form.Input
         label="first name"
-        name="firstName"
         value={firstName}
-        onChange={this.handleChange}
+        onChange={this.handleChange('firstName')}
          />
         <Form.Input
         label="Last Name"
@@ -46,7 +47,7 @@ class UserForm extends React.Component {
          label="membership options"
          name="membership"
          value={membershipOptions}
-         onchange={this.handleChange}
+         onChange={this.handleChange}
          options={membershipOptions}
           />
 
@@ -64,5 +65,22 @@ class UserForm extends React.Component {
     { key: "g", text: "Gold", value: "Gold", },
   ]
 
+  const ConnectedUserForm = (props) => {
+    return (
+      <UserConsumer>
+      { value => (
+      <UserForm
+        {...props }
+        firstName={value.firstName}
+        lastName={value.lastName}
+        avatar={value.avatar}
+        membershipOptions={value.membershipOptions}
+        updateUser={value.updateUser}
+        />
+      )}
+        </UserConsumer>
+    )
+  }
 
-export default UserForm;
+
+export default ConnectedUserForm;

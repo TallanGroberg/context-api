@@ -1,28 +1,32 @@
 import React from 'react';
 import { Card, } from 'semantic-ui-react';
+import { UserConsumer, } from '../provider/UserProvider';
 
 
 const User = () => (
 
+<UserConsumer>
+  {value => (
+
   <Card>
 
   <Card.Content>
-    <Card.Header> username </Card.Header>
+    <Card.Header> Your User Information </Card.Header>
 
       <Card.Meta>
-        Date Joined: dateJoined
+        Date Joined: ?{value.dateJoined}
       </Card.Meta>
 
       <Card.Meta>
-        First Name:
+        First Name: {value.firstName}
       </Card.Meta>
 
       <Card.Meta>
-        Last Name:
+        Last Name: {value.lastName}
       </Card.Meta>
 
       <Card.Meta>
-        Avatar:
+        Avatar: {value.avatar}
       </Card.Meta>
 
   </Card.Content>
@@ -33,7 +37,8 @@ const User = () => (
 
   </Card>
 
-
+)}
+</UserConsumer>
 );
 
 export default User;
