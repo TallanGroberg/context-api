@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, } from 'semantic-ui-react';
 
 
-const Account = () => (
+const User = () => (
 
   <Card>
 
@@ -12,16 +12,28 @@ const Account = () => (
       <Card.Meta>
         Date Joined: dateJoined
       </Card.Meta>
+
+      <Card.Meta>
+        First Name:
+      </Card.Meta>
+
+      <Card.Meta>
+        Last Name:
+      </Card.Meta>
+
+      <Card.Meta>
+        Avatar:
+      </Card.Meta>
+
   </Card.Content>
 
   <Card.Content>
     <p> Membership Level: membershipLevel</p>
   </Card.Content>
 
-
   </Card>
 
 
 );
 
-export default Account;
+export default User;

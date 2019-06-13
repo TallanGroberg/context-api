@@ -1,14 +1,14 @@
 import React from 'react';
 import { Header, } from 'semantic-ui-react';
-import Account from './Account'
-import AccountForm from './AccountForm'
+import User from './User'
+import UserForm from './UserForm'
 
 
 const UserProfile = () => (
   <>
   <Header as="h1">Welcome to your profile</Header>
-  <Account />
-  <AccountForm />
+  <User />
+  <UserForm />
 
   </>
 )
