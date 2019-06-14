@@ -6,10 +6,10 @@ export const UserConsumer = UserContext.Consumer;
 
 class UserProvider extends React.Component {
   state = {
-    firstName: 'stinkylue',
-    lastName: 'goonmat',
-    avatar: 'someimage',
-    membershipOptions: 'gold',
+    firstName: '',
+    lastName: '',
+    avatar: '',
+    membershipOptions: '',
     updateUser: (user) => this.updateUser(user),
   }
   updateUser = (user) => {

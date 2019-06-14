@@ -6,11 +6,12 @@ import { UserConsumer, } from "../provider/UserProvider"
 class UserForm extends React.Component {
   state =
      { firstName: this.props.firstName, lastName: this.props.lastName,
-       avatar: this.props.avatar, membershipOptions: this.props.membershipOptions, }
+       avatar: this.props.avatar,  }
 
 
   handleSubmit = (e) => {
     e.preventDefault();
+    this.props.updateUser({ ...this.state, })
   }
 
   handleChange = (name) => (e) => (
@@ -34,23 +35,15 @@ class UserForm extends React.Component {
         label="Last Name"
         name="lastName"
         value={lastName}
-        onChange={this.handleChange}
+        onChange={this.handleChange('lastName')}
          />
         <Form.Input
         label="Avatar"
         name="avatar"
         value={avatar}
-        onChange={this.handleChange}
+        placeholder="an image should go here"
+        onChange={this.handleChange('avatar')}
          />
-
-         <Form.Select
-         label="membership options"
-         name="membership"
-         value={membershipOptions}
-         onChange={this.handleChange}
-         options={membershipOptions}
-          />
-
 
         </Form.Group>
         <Form.Button color="blue">Save</Form.Button>
@@ -59,11 +52,6 @@ class UserForm extends React.Component {
   }
 
 }
-  const membershipOptions =  [
-    { key: "b", text: "Bronze", value: "Bronze", },
-    { key: "s", text: "Silver", value: "Silver", },
-    { key: "g", text: "Gold", value: "Gold", },
-  ]
 
   const ConnectedUserForm = (props) => {
     return (
